@@ -4,16 +4,13 @@ import sip
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QPushButton, QMessageBox, QHBoxLayout, QWidget, QCheckBox, QTextEdit, QLabel
 import sys
-
-MASTER_FOLDER_PATH = "C:\\Users\\Gobinath M\\Documents\\Python\\Tool\\Test"
-
+MASTER_FOLDER_PATH = ""    // Local Directory path where the JSON was stored
 def show_warning(message):
     msg = QMessageBox()
     msg.setIcon(QMessageBox.Warning)
     msg.setWindowTitle("Alert")
     msg.setText(message)
     msg.exec_()
-
 def search_clicked(input_box):
     folder_name = input_box.text().strip()
     if folder_name == "":
@@ -35,17 +32,13 @@ def window():
     win = QMainWindow()
     win.setGeometry(0, 0, 800, 500)
     win.setWindowTitle("Comparator")
-
-    # Set background color
-    win.setStyleSheet("background-color: lightblue;")
-
-    # Create a QLineEdit widget for input
+    win.setStyleSheet("background-color: light-blue;")
     input_box = QLineEdit(win)
     input_box.setPlaceholderText("Enter the MTID")
     input_box.setGeometry(50, 20, 400, 35)  # Adjust the geometry as needed
     input_box.setStyleSheet("padding: 10px; border-radius: 10px; background-color: white;")
 
-    # Create a QPushButton widget for search
+  
     search_button = QPushButton("Search", win)
     search_button.setGeometry(460, 20, 60, 35)  # Adjust the geometry as needed
     search_button.setStyleSheet(
@@ -61,13 +54,13 @@ def window():
         }
         """
     )
-    # Connect the clicked signal of the search button to the search_clicked function
+   
     search_button.clicked.connect(lambda: search_clicked(input_box))
 
-    # Create a circular checkbox with a checkmark icon
+  
     show_raw_checkbox = QCheckBox("", win)  # No text
     show_raw_checkbox.setGeometry(50, 60, 30, 30)  # Adjust the geometry as needed
-    # Apply stylesheet
+   
     show_raw_checkbox.setStyleSheet(
         """
         QCheckBox::indicator {
@@ -80,11 +73,11 @@ def window():
         """
     )
 
-    # Create a QLabel widget for "Show Raw Data" text
+ 
     show_raw_label = QLabel("Show Raw Data", win)
     show_raw_label.setGeometry(80, 60, 120, 30)  # Adjust the geometry as needed
 
-    # Create a QPushButton widget for compare
+
     compare_button = QPushButton("Compare", win)
     compare_button.setGeometry(540, 20, 70, 35)  # Adjust the geometry as needed
     compare_button.setStyleSheet(
@@ -101,12 +94,12 @@ def window():
         """
     )
 
-    # Create the first QTextEdit widget for text input
+    
     text_edit1 = QTextEdit(win)
     text_edit1.setGeometry(50, 100, 350, 300)  # Adjust the geometry as needed
     text_edit1.setStyleSheet("padding: 10px; border-radius: 10px; background-color: white;")
 
-    # Create the second QTextEdit widget for text input
+   
     text_edit2 = QTextEdit(win)
     text_edit2.setGeometry(410, 100, 350, 300)  # Adjust the geometry as needed
     text_edit2.setStyleSheet("padding: 10px; border-radius: 10px; background-color: white;")
